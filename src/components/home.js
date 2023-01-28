@@ -1,11 +1,35 @@
 import React from "react";
+import './myStyles.css';
 
 const Home = ({ user, dispatch }) => {
 
     return(
         <>
-            <h1> Home </h1> 
-            <h2> Hello {user.name} </h2>
+            <div class="container">
+                <h1>App Name</h1>
+
+                <div class="body">
+
+                    <div class="left">
+
+                        <form>
+                            <input type="text" name="from" placeholder="From..."/>
+                            <input type="text" name="to" placeholder="To..."/>
+                        </form>
+
+                        <div class="statsDisplay">
+                            Info about saving 
+                        </div>
+
+                    </div>
+                    
+                    <div class="right">
+                        <div class="map">map goes here</div>
+                    </div>
+
+                </div>
+
+            </div>
         </>
     );
 
