@@ -1,5 +1,8 @@
 import React from "react";
 import './myStyles.css';
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import Map from "./Map";
+
 
 const Home = ({ user, dispatch }) => {
 
@@ -24,7 +27,7 @@ const Home = ({ user, dispatch }) => {
                     </div>
                     
                     <div class="right">
-                        <div class="map">map goes here</div>
+                        <div class="map"><Map /></div>
                     </div>
 
                 </div>
