@@ -15,8 +15,8 @@ function App() {
     <BrowserRouter>
       {/* <button onClick={Test}> Test </button> */}
       <Routes>
-        <Route path="/" element={user ? <Home user={user} dispatch={dispatch} /> : <Navigate to="/login" replace />} />
-        <Route path='/login' element={user ? <Navigate to="/home" replace /> : <LogIn dispatch={dispatch} /> } /> 
+        <Route path="/" element={<Home />} />
+        <Route path='/login' element={<LogIn dispatch={dispatch}/> } /> 
       </Routes>
     </BrowserRouter>
    </>

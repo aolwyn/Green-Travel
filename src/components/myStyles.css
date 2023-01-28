@@ -1,0 +1,43 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.body {
+    /* background-color: cyan; */
+    display: flex;
+}
+
+.left {
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 500px;
+}
+
+.right {
+    /* background-color: red; */
+    width: 430px;
+    height: 500px;
+}
+
+.left form {
+    display: flex;
+    flex-direction: column;
+}
+
+.left form input {
+    width: 300px;
+}
+
+.map {
+
+}
+
+.statsDisplay {
+
+}
