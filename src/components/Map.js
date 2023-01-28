@@ -1,14 +1,14 @@
 import React from 'react'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, DirectionsService, DistanceMatrixService } from '@react-google-maps/api';
 
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  width: '500px',
+  height: '500px',
 };
 
 const center = {
   lat: 44.22835,
-  lng: -76.49433
+  lng: -76.49433,
 };
 
 const Map =() => {
@@ -35,7 +35,7 @@ const Map =() => {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={10}
+        zoom={5}
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
