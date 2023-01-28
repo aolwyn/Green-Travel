@@ -35,7 +35,7 @@ const Login = ({ dispatch }) => {
             <form onSubmit={handleLogin}>
             <label> Email </label>
             <input type="text" onChange={(e) => setEmail(e.target.value)} name="email" autoComplete="email"></input>
-            <input type="passowrd" onChange={(e) => setPassword(e.target.value)} name="password" autoComplete="password"></input>
+            <input type="password" onChange={(e) => setPassword(e.target.value)} name="password" autoComplete="password"></input>
             <button type="submit" disabled={!email || !password}> Login </button>
             </form>
         </>

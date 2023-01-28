@@ -1,11 +1,14 @@
 import { Client as Appwrite, Databases, Account } from 'appwrite';
 import { Server } from '../utils/config';
 
-
 let api = {
     sdk: null,
 
     provider: () => {
+        if (api.sdk) {
+            return api.sdk;
+        }
+
         let appwrite = new Appwrite();
         appwrite.setEndpoint(Server.endpoint).setProject(Server.project);
         const account = new Account(appwrite);
@@ -13,15 +16,10 @@ let api = {
     
         api.sdk = { account };
 
-        if (api.sdk === null) {
-            return api.sdk;
-        }
-
         return appwrite;
     },
 
     createAccount: (email, password, name) => {
-        console.log(api.provider().account, api.provider())
         return api.provider().account.create('unique()', email, password, name);
     },
     getAccount: () => {
