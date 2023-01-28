@@ -5,6 +5,10 @@ import LogIn from './components/Login/login'
 import Home from "./components/home"
 import { useGetUser } from "./api/hooks";
 import Login from './components/Login/login';
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import './bootstrap-theme.scss'
+// import './my-colours.scss'
+
 function App() {
   const [{ user, isLoading, isError }, dispatch] = useGetUser();
   const Test = () => {
@@ -15,8 +19,8 @@ function App() {
     <BrowserRouter>
       {/* <button onClick={Test}> Test </button> */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path='/login' element={<LogIn dispatch={dispatch}/> } /> 
+        <Route path="/" element={<Home className="div"/>} />
+        <Route path='/login' element={<LogIn className="div" dispatch={dispatch}/> } /> 
       </Routes>
     </BrowserRouter>
    </>
