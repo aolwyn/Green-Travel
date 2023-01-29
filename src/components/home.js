@@ -46,6 +46,11 @@ const Home = ({ user, dispatch }) => {
         setData(data.data.routes)
         setDistance(data.data.routes[0].legs[0].distance.value)
         setDuration(data.data.routes[0].legs[0].duration.value)
+        
+        if(distance !== '' || duration !== '') {
+            
+        }
+
     }
   
     return(
