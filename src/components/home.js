@@ -105,24 +105,7 @@ const Home = ({ user, dispatch }) => {
                     </div>
                 </div>
             </div>
-            {/* <div classNameName="container">
-                <h1>App Name</h1>
-                <div classNameName="body">
-                    <div classNameName="left">
-                       
-                        <input type="text" ref={originRef} name="from" placeholder="Choose a starting point"/>
-                        <input type="text" ref={destinationRef} name="to" placeholder="Choose a destination"/>
-                        <button onClick={calculateRoute}>Submit</button>
-                        <p>{ distance }</p>
-                        <div classNameName="statsDisplay">
-                            Info about saving 
-                        </div>
-                    </div>
-                    <div classNameName="right">
-                        <div classNameName="map"><Map /></div>
-                    </div>
-                </div>
-            </div> */}
+            
         </>
     );
 
