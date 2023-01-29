@@ -24,10 +24,15 @@
 }
 
 .right {
-    /* background-color: red; */
+    background-color: red;
     width: 350px;
     border: 1px solid rgba(160, 160, 170, 0.5);
     border-radius: 5px;
+}
+
+.map {
+    border-radius: 20px;
+    width: 100px;
 }
 
 .left form {
@@ -35,13 +40,13 @@
     flex-direction: column;
 }
 
-.left form input {
+/* .left form input {
     margin-top: 30px;
 }
 
 .left form button {
     margin-top: 30px;
-}
+} */
 
 .form-control:focus {
     border-color: #28a745 !important;
@@ -64,7 +69,7 @@
 .stats {
     height: fill;
     border: solid 1px rgba(160, 160, 170, 0.5);
-    margin-top: 30px;
+    /* margin-top: 30px; */
     border-radius: 5px;
 }
 

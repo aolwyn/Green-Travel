@@ -2,8 +2,8 @@ import React from 'react'
 import { GoogleMap, useJsApiLoader, DirectionsService, DistanceMatrixService } from '@react-google-maps/api';
 
 const containerStyle = {
-  width: '500px',
-  height: '500px',
+  width: '350px',
+  height: '350px',
 };
 
 const center = {
