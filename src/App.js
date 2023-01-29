@@ -17,7 +17,7 @@ function App() {
    <>
     <BrowserRouter>
       <Routes>        
-        <Route path="/" element={user ? <LandingPage /> : <Navigate to="/login" replace />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path='/login' element={user ? <Navigate to="/home" replace /> : <Login dispatch={dispatch} /> } /> 
         <Route path='/home' element={<Home user={user} dispatch={dispatch} /> } /> 
       </Routes>
