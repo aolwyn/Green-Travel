@@ -38,45 +38,44 @@ const Home = ({ user, dispatch }) => {
         if (origin === '' || destination === '') {
             return
         }
+
+        console.log(origin)
+        console.log(destination)
         
         let url = encodeURI(`https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`);
         config.url = url
         let data = await axios.get(config.url, config.headers)
-
+        console.log(data)
         setData(data.data.routes)
         setDistance(data.data.routes[0].legs[0].distance.value)
         setDuration(data.data.routes[0].legs[0].duration.value)
+        console.log(distance)
+        console.log(duration)
     }
   
     return(
         <>
             <div className="container">
-
                 <h1 className="title">Green Travel</h1>
 
                 <div className="body">
 
                     <div className="left">
-                        <input type="text" onChange={handleOrigin} name="from" placeholder="Choose a starting point"/>
-                        <input type="text" onChange={handleDestination} name="to" placeholder="Choose a destination"/>
-                        <button onClick={calculateRoute}>Submit</button>
-                        <div className="statsDisplay">
-
                         <ButtonGroup className="mb-4" aria-label="Basic example">
                             <Button variant="primary">W/B</Button>
                             <Button variant="primary">Car</Button>
                             <Button variant="primary">Bus</Button>
                         </ButtonGroup>
                         
-                        <form onSubmit={calculateRoute}>
-                            <Form.Group className="mb-4">
-                                <Form.Control placeholder="Choose a starting point"/>
-                            </Form.Group>
-                            <Form.Group className="mb-4">
-                                <Form.Control placeholder="Choose a destination"/>
-                            </Form.Group>
-                            <Button className="btn btn-primary mb-4" type="submit">Go!</Button>
-                        </form>
+                        
+                        <Form.Group className="mb-4">
+                            <Form.Control placeholder="Choose a starting point" onChange={handleOrigin}/>
+                        </Form.Group>
+                        <Form.Group className="mb-4">
+                            <Form.Control placeholder="Choose a destination" onChange={handleDestination}/>
+                        </Form.Group>
+                        <Button className="btn btn-primary mb-4" onClick={calculateRoute}>Go!</Button>
+                        
 
                         <div className="stats">
                             stats go here
@@ -88,9 +87,10 @@ const Home = ({ user, dispatch }) => {
                         <div className="mapMask"></div>
                         <div className="map"><Map /></div>
                     </div>
+
                 </div>
             </div>
-        </div> 
+
         </>
     );
 
