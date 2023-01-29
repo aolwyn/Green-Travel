@@ -4,7 +4,6 @@ import api from "../../api/api";
 import SignUp from "./signup";
 import { FetchState } from "../../api/hooks";
 
-
 const Login = ({ dispatch }) => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
