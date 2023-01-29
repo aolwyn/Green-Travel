@@ -38,37 +38,30 @@ const Home = ({ user, dispatch }) => {
     }
     
     async function calculateRoute() {
-        // if (origin === '' || destination === '') {
-        //     return
-        // }
-       
-        // let url = encodeURI(`https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`);
-        // config.url = url
-        // axios.get(config.url, config.headers)
-        // .then(
-        //     (res) => {
-        //         let data = res.data.routes[0].legs[0]
-        //         let distance = data.distance.value
-        //         let duration = data.duration.value
-        //         if(data){ 
-        //             setData(res.data.routes)
-        //         }
-        //         if(distance){
-        //             setDistance(distance)
-        //         }
-        //         if(duration){
-        //             setDuration(duration)
-        //         }
-        //     }
-        // )
-        try {
-            //let res = await api.listDocuments(Server.collectionID)
-            //console.log(api.sdk.database.listDocuments(Server.databaseID, Server.collectionID))
-            console.log(await api.createDocument(Server.databaseID, Server.collectionID, {name: "test"}))
-        } catch (error) {
-            console.log(error)
+        if (origin === '' || destination === '') {
+            return
         }
-
+       
+        let url = encodeURI(`https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`);
+        config.url = url
+        axios.get(config.url, config.headers)
+        .then(
+            (res) => {
+                let data = res.data.routes[0].legs[0]
+                let distance = data.distance.value
+                let duration = data.duration.value
+                if(data){ 
+                    setData(res.data.routes)
+                }
+                if(distance){
+                    setDistance(distance)
+                }
+                if(duration){
+                    setDuration(duration)
+                }
+            }
+        )
+    
     }
   
     return(

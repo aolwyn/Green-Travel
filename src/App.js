@@ -15,8 +15,9 @@ function App() {
    <>
     <BrowserRouter>
       <Routes>        
-        <Route path="/" element={user ? <Home user={user} dispatch={dispatch} /> : <Navigate to="/login" replace />} />
-        <Route path='/login' element={user ? <Navigate to="/" replace /> : <Login dispatch={dispatch} /> } /> 
+        <Route path="/" element={user ? <LandingPage /> : <Navigate to="/login" replace />} />
+        <Route path='/login' element={user ? <Navigate to="/home" replace /> : <Login dispatch={dispatch} /> } /> 
+        <Route path='/home' element={<Home user={user} dispatch={dispatch} /> } /> 
       </Routes>
     </BrowserRouter>
    </>
