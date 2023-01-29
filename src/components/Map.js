@@ -3,8 +3,8 @@ import { GoogleMap, useJsApiLoader, DirectionsRenderer, DistanceMatrixService, }
 import axios from "axios";
 
 const containerStyle = {
-  width: '500px',
-  height: '500px',
+  width: '350px',
+  height: '350px',
 };
 
 const center = {

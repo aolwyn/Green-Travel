@@ -4,6 +4,9 @@ import { Autocomplete, GoogleMap, useJsApiLoader, DirectionsRenderer } from '@re
 import Map from "./Map";
 import axios from "axios";
 
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 const config = {
   method: 'get',
   url: '',
@@ -13,9 +16,8 @@ const config = {
           "Content-Type": "application/json"
       } 
   }
+
 };
-
-
 const Home = ({ user, dispatch }) => {
 
     const [origin, setOrigin] = useState('')
@@ -31,7 +33,7 @@ const Home = ({ user, dispatch }) => {
     const handleDestination = async (e) => {
         setDestination(e.target.value)
     }
-
+    
     async function calculateRoute() {
         if (origin === '' || destination === '') {
             return
@@ -49,23 +51,47 @@ const Home = ({ user, dispatch }) => {
     return(
         <>
             <div className="container">
-                <h1>App Name</h1>
+
+                <h1 className="title">Green Travel</h1>
+
                 <div className="body">
+
                     <div className="left">
                         <input type="text" onChange={handleOrigin} name="from" placeholder="Choose a starting point"/>
                         <input type="text" onChange={handleDestination} name="to" placeholder="Choose a destination"/>
                         <button onClick={calculateRoute}>Submit</button>
                         <div className="statsDisplay">
-                            Info about saving 
-                        </div>
+
+                        <ButtonGroup className="mb-4" aria-label="Basic example">
+                            <Button variant="primary">W/B</Button>
+                            <Button variant="primary">Car</Button>
+                            <Button variant="primary">Bus</Button>
+                        </ButtonGroup>
+                        
+                        <form onSubmit={calculateRoute}>
+                            <Form.Group className="mb-4">
+                                <Form.Control placeholder="Choose a starting point"/>
+                            </Form.Group>
+                            <Form.Group className="mb-4">
+                                <Form.Control placeholder="Choose a destination"/>
+                            </Form.Group>
+                            <Button className="btn btn-primary mb-4" type="submit">Go!</Button>
+                        </form>
+
+                        <div className="stats">
+                            stats go here
+                        </div> 
+
                     </div>
+
                     <div className="right">
                         <div className="map"><Map /></div>
                     </div>
                 </div>
             </div>
-        </>
-    );
+        </div>
+    </>
+);
 
 };
 
