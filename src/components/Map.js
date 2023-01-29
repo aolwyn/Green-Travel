@@ -1,5 +1,6 @@
-import React from 'react'
-import { GoogleMap, useJsApiLoader, DirectionsService, DistanceMatrixService } from '@react-google-maps/api';
+import React, {useState, useRef, useEffect} from 'react'
+import { GoogleMap, useJsApiLoader, DirectionsRenderer, DistanceMatrixService, } from '@react-google-maps/api';
+import axios from "axios";
 
 const containerStyle = {
   width: '350px',
@@ -30,6 +31,7 @@ const Map = () => {
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null)
   }, [])
+
 
   return isLoaded ? (
       <GoogleMap
