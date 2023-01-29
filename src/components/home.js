@@ -115,12 +115,28 @@ const Home = ({ user, dispatch }) => {
                     </div> 
                 )
             }
-
         }  
     }
 
     return(
         <>
+            <style type="text/css">
+            {`
+                .btn-flat {
+                    background-color: white;
+                    border: 1px solid black;
+                }
+
+                .btn-flat:hover {
+                    background-color: #2fb14d;
+                }
+
+                .btn-submit {
+                    border: rgb(68, 198, 98);
+                }
+            `}
+            </style>
+
             <div className="container">
                 <h1 className="title">Green Travel</h1>
 
@@ -128,11 +144,16 @@ const Home = ({ user, dispatch }) => {
 
                     <div className="left">
                         <ButtonGroup className="mb-4" aria-label="Basic example">
-                            <Button variant="primary" onClick={() => {setTravelMethod("WalkOrBike")}}>
-                                <i class="las la-walking"></i>
+                            <Button id="walkorbikeBtn" variant="flat" onClick={() => {setTravelMethod("WalkOrBike")}}>
+                                <i class="las la-walking la-lg"></i>
+                                <i class="las la-biking la-lg"></i>
                             </Button>
-                            <Button variant="primary" onClick={() => {setTravelMethod("Car")}}>Car</Button>
-                            <Button variant="primary" onClick={() => {setTravelMethod("Bus")}}>Bus</Button>
+                            <Button id="carBtn" variant="flat" onClick={() => {setTravelMethod("Car")}}>
+                            <i class="las la-car-side la-lg"></i>
+                            </Button>
+                            <Button id="busBtn" variant="flat" onClick={() => {setTravelMethod("Bus")}}>
+                            <i class="las la-bus la-lg"></i>
+                            </Button>
                         </ButtonGroup>
                         
                         <Form.Group className="mb-4">
@@ -141,7 +162,7 @@ const Home = ({ user, dispatch }) => {
                         <Form.Group className="mb-4">
                             <Form.Control placeholder="Choose a destination" onChange={handleDestination}/>
                         </Form.Group>
-                        <Button className="btn btn-primary mb-4" onClick={calculateRoute}>Go!</Button>
+                        <Button className="btn btn-primary mb-4" variant="submit" onClick={calculateRoute}>Go!</Button>
 
                         {renderStats()}
                         {/* {(routeIsCreated.current) &&
