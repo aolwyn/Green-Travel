@@ -6,6 +6,7 @@ import { useGetUser } from "./api/hooks";
 import Login from './components/Login/login';
 import Map from './components/Map';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import LandingPage from './components/landingPage';
 
 function App() {
   const [{ user, isLoading, isError }, dispatch] = useGetUser();

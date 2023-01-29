@@ -71,7 +71,7 @@
 
 
 .stats {
-    height: fill;
+    height: stretch;
     border: solid 1px rgba(160, 160, 170, 0.5);
     /* margin-top: 30px; */
     border-radius: 5px;
