@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500&display=swap');
+
 .container {
     display: flex;
     justify-content: center;
@@ -9,20 +11,28 @@
 .body {
     /* background-color: cyan; */
     display: flex;
+    margin-top: 100px;
+    height: 350px;
 }
 
 .left {
     /* background-color: blue; */
     display: flex;
     flex-direction: column;
-    width: 400px;
-    height: 500px;
+    width: 300px;
+    margin-right: 100px;
 }
 
 .right {
-    /* background-color: red; */
-    width: 430px;
-    height: 500px;
+    background-color: red;
+    width: 350px;
+    border: 1px solid rgba(160, 160, 170, 0.5);
+    border-radius: 5px;
+}
+
+.map {
+    border-radius: 20px;
+    width: 100px;
 }
 
 .left form {
@@ -30,14 +40,42 @@
     flex-direction: column;
 }
 
-.left form input {
-    width: 300px;
+/* .left form input {
+    margin-top: 30px;
 }
 
-.map {
+.left form button {
+    margin-top: 30px;
+} */
 
+.form-control:focus {
+    border-color: #28a745 !important;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+} 
+
+.btn-primary, .btn-primary:active, .btn-primary:visited {
+    background-color: #2fb14d !important;
 }
 
-.statsDisplay {
-
+.btn-primary:hover {
+    background-color: #218438 !important;
 }
+
+.btn-primary {
+    outline-color: black !important;
+}
+
+
+.stats {
+    height: stretch;
+    border: solid 1px rgba(160, 160, 170, 0.5);
+    /* margin-top: 30px; */
+    border-radius: 5px;
+}
+
+.title {
+    margin-top: 50px;
+    color: #5AC364;
+    font-family: 'Montserrat', sans-serif;
+}
+

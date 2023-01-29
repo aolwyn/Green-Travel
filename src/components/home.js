@@ -1,87 +1,128 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import './myStyles.css';
-import { Autocomplete, GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { Autocomplete, GoogleMap, useJsApiLoader, DirectionsRenderer } from '@react-google-maps/api';
 import Map from "./Map";
+import axios from "axios";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
-
-async function calculateRoute() {
-    if (originRef.current.value === '' || destinationRef.current.value === '') {
-      return
+var config = {
+    method: 'get',
+    url: '',
+    headers: { 
+        post: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json"
+        } 
     }
-    // eslint-disable-next-line no-undef
-    const directionsService = new google.maps.DirectionsService()
-    const results = await directionsService.route({
-      origin: originRef.current.value,
-      destination: destinationRef.current.value,
-      // eslint-disable-next-line no-undef
-      travelMode: google.maps.TravelMode.DRIVING,
-    })
-    setDirectionsResponse(results)
-    setDistance(results.routes[0].legs[0].distance.text)
-    setDuration(results.routes[0].legs[0].duration.text)
-  }
-
-  function clearRoute() {
-    setDirectionsResponse(null)
-    setDistance('')
-    setDuration('')
-    originRef.current.value = ''
-    destinationRef.current.value = ''
-  }
-
-  directionsService.route(
-    {
-      origin: origin,
-      destination: destination,
-      travelMode: google.maps.TravelMode.DRIVING
-    },
-    (result, status) => {
-      if (status === google.maps.DirectionsStatus.OK) {
-        this.setState({
-          directions: result
-        });
-      } else {
-        console.error(`error fetching directions ${result}`);
-      }
-    }
-  );
-
-
-
-
-
+};
 const Home = ({ user, dispatch }) => {
+    const [map, setMap] = useState(/** @type google.maps.Map */ (null))
+    const [directionsResponse, setDirectionsResponse] = useState(null)
+    const [distance, setDistance] = useState('')
+    const [duration, setDuration] = useState('')
+    const [url, setUrl] = useState('')
+    const [data, setData] = useState('')
+    /** @type React.MutableRefObject<HTMLInputElement> */
+    const originRef = useRef()
+    /** @type React.MutableRefObject<HTMLInputElement> */
+    const destinationRef = useRef()
+    const google = window.google;    
+
+    async function calculateRoute() {
+        if (originRef.current.value === '' || destinationRef.current.value === '') {
+            return
+
+        }
+        
+        let url = encodeURI(`https://maps.googleapis.com/maps/api/directions/json?origin=${originRef.current.value}&destination=${destinationRef.current.value}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`);
+        setUrl(url)
+        console.log(data)
+        setDistance(data[0].legs[0].distance.value)
+        setDuration(data[0].legs[0].duration.value)
+    }
+    
+    function clearRoute() {
+        setDirectionsResponse(null)
+        setDistance('')
+        setDuration('')
+        originRef.current.value = ''
+        destinationRef.current.value = ''
+    }
+    
+    // directionsService.route(
+    //     {
+    //         origin: origin,
+    //         destination: destination,
+    //         travelMode: google.maps.TravelMode.DRIVING
+    //     },
+    //     (result, status) => {
+    //         if (status === google.maps.DirectionsStatus.OK) {
+    //         this.setState({
+    //             directions: result
+    //         });
+    //         } else {
+    //         console.error(`error fetching directions ${result}`);
+    //         }
+    //     }
+    // );
 
     return(
         <>
-            <div class="container">
-                <h1>App Name</h1>
+            <div className="container">
 
-                <div class="body">
+                <h1 className="title">Green Travel</h1>
 
-                    <div class="left">
-                        <form>
-                            <Autocomplete>
-                            <input type="text" ref  ={originRef} name="from" placeholder="From..."/>
-                            </Autocomplete>
-                            <Autocomplete>
-                            <input type="text" ref = {destinationRef} name="to" placeholder="To..."/>
-                            </Autocomplete>
+                <div className="body">
+
+                    <div className="left">
+
+                        <ButtonGroup className="mb-4" aria-label="Basic example">
+                            <Button variant="primary">W/B</Button>
+                            <Button variant="primary">Car</Button>
+                            <Button variant="primary">Bus</Button>
+                        </ButtonGroup>
+                        
+                        <form onSubmit={calculateRoute}>
+                            <Form.Group className="mb-4">
+                                <Form.Control placeholder="Choose a starting point"/>
+                            </Form.Group>
+                            <Form.Group className="mb-4">
+                                <Form.Control placeholder="Choose a destination"/>
+                            </Form.Group>
+                            <Button className="btn btn-primary mb-4" type="submit">Go!</Button>
                         </form>
 
-                        <div class="statsDisplay">
+                        <div className="stats">
+                            stats go here
+                        </div> 
+
+                    </div>
+
+                    <div className="right">
+                        <div className="map"><Map /></div>
+                    </div>
+                </div>
+            </div>
+            {/* <div classNameName="container">
+                <h1>App Name</h1>
+                <div classNameName="body">
+                    <div classNameName="left">
+                       
+                        <input type="text" ref={originRef} name="from" placeholder="Choose a starting point"/>
+                        <input type="text" ref={destinationRef} name="to" placeholder="Choose a destination"/>
+                        <button onClick={calculateRoute}>Submit</button>
+                        <p>{ distance }</p>
+                        <div classNameName="statsDisplay">
                             Info about saving 
                         </div>
-
                     </div>
-                    
-                    <div class="right">
-                        <div class="map"><Map /></div>
+                    <div classNameName="right">
+                        <div classNameName="map"><Map /></div>
                     </div>
-
                 </div>
-
-            </div>
+            </div> */}
         </>
     );
 
