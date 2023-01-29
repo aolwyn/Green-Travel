@@ -12,9 +12,9 @@ let api = {
         let appwrite = new Appwrite();
         appwrite.setEndpoint(Server.endpoint).setProject(Server.project);
         const account = new Account(appwrite);
-        //const database = new Databases(appwrite, Server.databaseID);
+        const database = new Databases(appwrite, Server.databaseID);
     
-        api.sdk = { account };
+        api.sdk = { account, database };
 
         return appwrite;
     },
